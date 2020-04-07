@@ -1,0 +1,59 @@
+# This is an example goreleaser.yaml file with some sane defaults.
+# Make sure to check the documentation at http://goreleaser.com
+
+project_name: goreleaser-app
+
+builds:
+  - binary: goreleaser-app
+    goos:
+      - darwin
+      - windows
+      - linux
+      - freebsd
+    goarch:
+      - amd64
+      - arm64
+      - arm
+      - 386
+      - ppc64le
+      - s390x
+      - mips64
+      - mips64le
+    goarm:
+      - 6
+      - 7
+    gomips:
+      - hardfloat
+    env:
+      - CGO_ENABLED=0
+    main: ./
+    ldflags: -s -w -X github.com/zhouxianyou/goreleaser-app/cmd.version={{.Version}} -X github.com/zhouxianyou/goreleaser-app/cmd.commit={{.ShortCommit}} -X github.com/zhouxianyou/goreleaser-app/cmd.date={{.Date}}
+
+archives:
+- replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    386: i386
+    amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+    - Merge pull request
+    - Merge branch
+
+dockers:
+  - dockerfile: build/Dockerfile
+    binaries:
+      - goreleaser-app
+    image_templates:
+      - "zhouxianyou/goreleaser-app:latest"
+      - "zhouxianyou/goreleaser-app:{{ .Tag }}"
+      - "zhouxianyou/goreleaser-app:v{{ .Major }}.{{ .Minor }}"

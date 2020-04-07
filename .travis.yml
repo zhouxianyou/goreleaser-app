@@ -1,0 +1,31 @@
+language: go
+go:
+  - 1.12.x
+  - 1.13.x
+  - 1.14.x
+env:
+  - GO111MODULE=on
+go_import_path: github.com/zhouxianyou/goreleaser-app
+before:
+  hooks:
+    - go mod download
+branches:
+  only: # speed up CI: don't build pull requests twice
+    - "master"
+script:
+  - go build
+services:
+  - docker
+after_success:
+  - test -n "$TRAVIS_TAG" && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - echo "travis go version='$TRAVIS_GO_VERSION'"
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    github_token: $GH_TOKEN-travis
+    script: make release
+    on:
+      tags: true
+      # it's important to build on the newest version of go:
+      condition: $TRAVIS_GO_VERSION =~ ^1\.14
