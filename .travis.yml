@@ -16,9 +16,9 @@ script:
   - go build
 services:
   - docker
-#after_success:
-#  - test -n "$TRAVIS_TAG" && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-#  - echo "travis go version='$TRAVIS_GO_VERSION'"
+after_success:
+  - test -n "$TRAVIS_TAG" && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - echo "travis go version='$TRAVIS_GO_VERSION'"
 
 deploy:
   - provider: script
