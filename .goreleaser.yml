@@ -2,7 +2,9 @@
 # Make sure to check the documentation at http://goreleaser.com
 
 project_name: goreleaser-app
-
+env_files:
+  # use only one or release will fail!
+  github_token: E:\Company\.goreleasertoken\gh_token
 builds:
   - binary: goreleaser-app
     goos:
@@ -50,7 +52,7 @@ changelog:
     - Merge branch
 
 dockers:
-  - dockerfile: build/Dockerfile
+  - dockerfile: ./Dockerfile
     binaries:
       - goreleaser-app
     image_templates:
