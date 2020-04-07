@@ -5,10 +5,7 @@ go:
   - 1.14.x
 env:
   - GO111MODULE=on
-go_import_path: github.com/zhouxianyou/goreleaser-app
-before:
-  hooks:
-    - go mod download
+install: true
 branches:
   only: # speed up CI: don't build pull requests twice
     - "master"

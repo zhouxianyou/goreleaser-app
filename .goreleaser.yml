@@ -2,9 +2,9 @@
 # Make sure to check the documentation at http://goreleaser.com
 
 project_name: goreleaser-app
-env_files:
+#env_files:
   # use only one or release will fail!
-  github_token: E:\Company\.goreleasertoken\gh_token
+#  github_token: E:\Company\.goreleasertoken\gh_token
 builds:
   - binary: goreleaser-app
     goos:
