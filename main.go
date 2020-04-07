@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"github.com/zhouxianyou/goreleaser-app/cmd"
 )
 
 func main() {
-	fmt.Println("go mod init github.com/zhouxianyou/goreleaser-app")
+	cmd.Execute()
 }
