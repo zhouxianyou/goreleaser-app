@@ -24,7 +24,7 @@ jobs:
           go-version: 1.14.x
       - name: Setup asc
         run: |
-          /usr/bin/gpg --keyserver hkps://keys.openpgp.org --recv-keys 1998F1B1867AC528
+          /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
           /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
       -
         name: Run GoReleaser
