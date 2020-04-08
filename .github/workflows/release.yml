@@ -23,10 +23,9 @@ jobs:
         with:
           go-version: 1.13.x
       -
-        name: Echo
+        name: Install gnupg
         run: |
-          go env
-          whoami
+          sudo apt-get install gnupg
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1.3.1
