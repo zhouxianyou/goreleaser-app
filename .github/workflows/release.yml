@@ -25,7 +25,8 @@ jobs:
       -
         name: Echo
         run: |
-          - go env
+          go env
+          whoami
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1.3.1
