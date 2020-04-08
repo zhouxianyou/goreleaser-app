@@ -35,6 +35,8 @@ jobs:
         with:
           version: latest
           args: release --rm-dist --snapshot
+          run: |
+            more /home/runner/key.asc
           key: ${{ secrets.ACTION_DEPLOY_KEY }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
