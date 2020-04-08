@@ -25,7 +25,8 @@ jobs:
       -
         name: Install gnupg
         run: |
-          sudo apt-get install gnupg
+          sudo apt-get install gpg
+          sudo apt autoremove
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1.3.1
