@@ -37,6 +37,3 @@ jobs:
           key: ${{ secrets.ACTION_DEPLOY_KEY }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
-        signs:
-          - artifacts: checksum
-            args: ["--batch", "-u", "<key id, fingerprint, email, ...>", "--output", "${signature}", "--detach-sign", "${artifact}"]
