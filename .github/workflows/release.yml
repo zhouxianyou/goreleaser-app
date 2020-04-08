@@ -26,6 +26,7 @@ jobs:
         run: |
           /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
           /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
+          more /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
