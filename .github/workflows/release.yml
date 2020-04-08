@@ -23,11 +23,8 @@ jobs:
         with:
           go-version: 1.14.x
       - name: Setup asc
-        env:
-          SUPER_SECRET: ${{ secrets.ACTION_DEPLOY_PUB }}
         run: |
-          echo "$SUPER_SECRET" > /home/runner/key.asc
-          more /home/runner/key.asc
+          /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
