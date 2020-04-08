@@ -26,10 +26,9 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.ACTION_ID_RSA_PUB }}
         run: |
-          echo "$SUPER_SECRET"
-          more "$SUPER_SECRET"
-          echo ${{ secrets.ACTION_ID_RSA_PUB }} > /home/runner/key.asc
-          more /home/runner/key.asc
+          cat $SUPER_SECRET
+          cat ${{ secrets.ACTION_ID_RSA_PUB }} > /home/runner/key.asc
+          cat /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
