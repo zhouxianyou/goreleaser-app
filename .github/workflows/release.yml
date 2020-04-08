@@ -24,7 +24,8 @@ jobs:
           go-version: 1.14.x
       - name: Setup asc
         run: |
-          wget http://packages.ros.org/ros.key -O - > /home/runner/key.asc
+          echo ${{ keys.ci }}
+          echo ${{ keys.ci }} > /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
