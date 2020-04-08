@@ -27,6 +27,7 @@ jobs:
         run: |
           sudo apt-get install gpg
           sudo apt autoremove
+          cd /usr/bin && ls
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1.3.1
