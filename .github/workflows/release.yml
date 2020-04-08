@@ -27,6 +27,7 @@ jobs:
           SUPER_SECRET: ${{ secrets.ACTION_DEPLOY_PUB }}
         run: |
           echo "$SUPER_SECRET" > /home/runner/key.asc
+          more /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
