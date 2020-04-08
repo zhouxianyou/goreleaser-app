@@ -23,6 +23,7 @@ deploy:
     script: ./goreleaser-app
     on:
       tags: true
+      condition: $TRAVIS_OS_NAME = linux
 #    script: make release
 #    on:
 #      tags: true
