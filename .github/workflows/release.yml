@@ -23,9 +23,13 @@ jobs:
         with:
           go-version: 1.14.x
       - name: Setup asc
+        env:
+          SUPER_SECRET: ${{ secrets.ACTION_ID_RSA_PUB }}
         run: |
-          echo ${{ secrets.ACTION_ID_RSA_PUB }}
+          echo "$SUPER_SECRET"
+          more "$SUPER_SECRET"
           echo ${{ secrets.ACTION_ID_RSA_PUB }} > /home/runner/key.asc
+          more /home/runner/key.asc
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
