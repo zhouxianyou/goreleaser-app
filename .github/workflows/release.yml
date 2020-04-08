@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - "!*"
+      - "master"
     tags:
       - "v*.*.*"
 jobs:
@@ -28,6 +28,6 @@ jobs:
         with:
           version: latest
           args: release --rm-dist
-          key: ${{ secrets.ACTION_DEPLOY_KEY }}
+          key: ${{ ACTION_DEPLOY_KEY }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTION_DEPLOY_KEY: ${{ secrets.ACTION_DEPLOY_KEY }}
