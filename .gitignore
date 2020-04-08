@@ -2,3 +2,4 @@
 .idea/*
 goreleaser-app.exe
 dist
+goreleaser-app

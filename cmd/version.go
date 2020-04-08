@@ -16,6 +16,6 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Show version",
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Printf("golangci-lint has version %s built from %s on %s\n", version, commit, date)
+		cmd.Printf("goreleaser-app has version %s built from %s on %s\n", version, commit, date)
 	},
 }
