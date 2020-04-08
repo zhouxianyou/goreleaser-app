@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Set up asc
+        run: |
+          /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
+          /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
+          /usr/bin/gpg --import /home/runner/key.asc
+      -
         name: Checkout
         uses: actions/checkout@v2
       -
@@ -23,12 +29,6 @@ jobs:
         with:
           go-version: 1.14.x
       -
-        name: Set up asc
-        run: |
-          /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
-          /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
-          /usr/bin/gpg --import /home/runner/key.asc
-      -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
         with:
@@ -37,3 +37,6 @@ jobs:
           key: ${{ secrets.ACTION_DEPLOY_KEY }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
+        signs:
+          - artifacts: checksum
+            args: ["--batch", "-u", "<key id, fingerprint, email, ...>", "--output", "${signature}", "--detach-sign", "${artifact}"]
