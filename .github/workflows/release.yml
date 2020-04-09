@@ -35,7 +35,7 @@ jobs:
       -
         name: Run GoReleaser skip publish snapshot
         uses: goreleaser/goreleaser-action@v1
-        if: startsWith(github.ref, 'refs/branches/master')
+        if: startsWith(github.ref, 'refs/branches/')
         with:
           version: latest
           args: release --skip-publish --rm-dist --snapshot
