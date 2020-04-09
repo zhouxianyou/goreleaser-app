@@ -8,8 +8,8 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "go-apla",
-	Short: "Apla application",
+	Use:   "goreleaser",
+	Short: "application",
 }
 
 func init() {

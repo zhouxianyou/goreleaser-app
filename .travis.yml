@@ -15,7 +15,7 @@ services:
   - docker
 after_success:
   - test -n "$TRAVIS_TAG" && docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - echo "travis go version='$TRAVIS_GO_VERSION'"
+  - echo "travis os name='$TRAVIS_OS_NAME'"
 
 deploy:
   - provider: script

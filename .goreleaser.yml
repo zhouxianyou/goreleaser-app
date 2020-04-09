@@ -4,7 +4,9 @@
 #env_files:
   # use only one or release will fail!
 #  github_token: E:\Company\.goreleasertoken\gh_token
-
+env:
+  - GO111MODULE=on
+  - GOPROXY=https://gocenter.io
 before:
   hooks:
     - go mod download
@@ -14,24 +16,16 @@ builds:
       - darwin
       - windows
       - linux
-      - freebsd
     goarch:
       - amd64
       - arm64
       - arm
       - 386
-      - ppc64le
-      - s390x
-      - mips64
-      - mips64le
-    goarm:
-      - 6
-      - 7
-    gomips:
-      - hardfloat
+    ignore:
+      - goos: darwin
+        goarch: 386
     env:
       - CGO_ENABLED=0
-      - GO111MODULE=on
     main: .
     ldflags: -s -w -X github.com/zhouxianyou/goreleaser-app/cmd.version={{.Version}} -X github.com/zhouxianyou/goreleaser-app/cmd.commit={{.ShortCommit}} -X github.com/zhouxianyou/goreleaser-app/cmd.date={{.Date}}
 
