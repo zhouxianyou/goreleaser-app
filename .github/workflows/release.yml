@@ -11,12 +11,12 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up asc
-        run: |
-          /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
-          /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
-          /usr/bin/gpg --import /home/runner/key.asc
+#      -
+#        name: Set up asc
+#        run: |
+#          /usr/bin/gpg --keyserver hkp://keyserver.ubuntu.com --receive-keys 1998F1B1867AC528
+#          /usr/bin/gpg -a --export 1998F1B1867AC528 > /home/runner/key.asc
+#          /usr/bin/gpg --import /home/runner/key.asc
       -
         name: Checkout
         uses: actions/checkout@v2
