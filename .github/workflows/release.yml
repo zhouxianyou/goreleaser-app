@@ -23,22 +23,11 @@ jobs:
         with:
           go-version: 1.14.x
       -
-        name: Run GoReleaser release
+        name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           version: latest
           args: release --rm-dist
-          key: ${{ secrets.ACTION_DEPLOY_KEY }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
-      -
-        name: Run GoReleaser skip publish snapshot
-        uses: goreleaser/goreleaser-action@v1
-        if: startsWith(github.ref, 'refs/branches/')
-        with:
-          version: latest
-          args: release --skip-publish --rm-dist --snapshot
           key: ${{ secrets.ACTION_DEPLOY_KEY }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
